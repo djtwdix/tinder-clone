@@ -1,0 +1,18 @@
+.chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 70px;
+  border-bottom: 1px solid rgb(246, 246, 246)
+}
+
+.chat__details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.chat__details > p {
+  color: rgb(180, 180, 180);
+  font-size: 1rem;
+}
