@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid rgb(244, 244, 244);
+  box-shadow: 0px 0px 10px 0px lightgray;
 }
 
 .header__logo {
