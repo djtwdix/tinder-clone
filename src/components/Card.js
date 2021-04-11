@@ -1,38 +1,63 @@
-import React, { useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import TinderCard from "react-tinder-card";
-import "./Card.css";
-import database from "./firebase";
+import { db, timestamp } from "../firebase";
+import firebase from "firebase";
 
-export default function Card() {
-  const [people, setPeople] = useState([]);
+export default function Card({ pup, user }) {
+  const [view, setView] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = database.collection("users").onSnapshot((snapshot) => {
-      setPeople(snapshot.docs.map((doc) => doc.data()));
-    });
+  const onSwipe = (direction) => {
+    if (direction === "right") {
+      const chatsRef = db.collection("chats");
+      const messagesRef = db.collection("messages");
+      const myTimestamp = firebase.firestore.Timestamp.fromDate(new Date());
+      const chatID = user.uid.slice(0, 10) + pup.owner.id.slice(0, 10);
+      //query the databse for the dog owner's matches and if it includes your id it's a match
+      chatsRef
+        .doc(chatID)
+        .set({
+          participants: [
+            { id: user.uid, photoURL: user.photoURL, name: user.displayName },
+            {
+              id: pup.owner.id,
+              photoURL: pup.owner.photoURL,
+              name: pup.owner.name,
+            },
+          ],
+          participant_ids: [user.uid, pup.owner.id],
+          initialMessage: "Say hello!",
+          created_at: myTimestamp,
+        })
+        .then(() => {
+          messagesRef.doc(chatID).set({}, { merge: true });
+        });
+      //store the owner id in your match
+    }
+  };
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const parsedPeople = people.map((person) => {
-    return (
-      <TinderCard
-        className="swipe"
-        preventSwipe={["up", "down"]}
-        key={person.name}
-      >
-        <div className="card" style={{ backgroundImage: `url(${person.url})` }}>
-          <h3>{person.name}</h3>
-        </div>
-      </TinderCard>
-    );
-  });
+  const showStats = () => {
+    if (!view) {
+      setView(true);
+    } else {
+      setView(false);
+    }
+  };
 
   return (
-    <section>
-      <div className="card__container">{parsedPeople}</div>
-    </section>
+    <TinderCard
+      className="swipe"
+      onSwipe={onSwipe}
+      preventSwipe={["up", "down"]}
+      key={pup.name}
+    >
+      <div className="card" style={{ backgroundImage: `url(${pup.photoURL})` }}>
+        <div id="pupBadge">
+          <Button onClick={showStats}>
+            <h3>{pup.name}</h3>
+          </Button>
+        </div>
+      </div>
+    </TinderCard>
   );
 }

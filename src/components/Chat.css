@@ -4,15 +4,21 @@
   justify-content: space-between;
   padding: 20px;
   height: 70px;
-  border-bottom: 1px solid rgb(246, 246, 246)
+  width: 100%;
+  color: #ff66c4;
 }
 
 .chat__details {
-  flex: 1;
+  margin-right: auto;
   margin-left: 20px;
+  text-align: start;
 }
 
 .chat__details > p {
-  color: rgb(180, 180, 180);
+  color: lightgray;
   font-size: 1rem;
+}
+
+.chat__timestamp {
+  color: lightgray;
 }

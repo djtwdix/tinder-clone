@@ -13,19 +13,19 @@ export default function SwipeButtons() {
     <section>
       <footer className="swipeButtons MultiIconButton-root">
         <IconButton>
-          <ReplayIcon className="swipeButtons__repeat" fontSize="large" />
+          <ReplayIcon className="swipeButtons__repeat"  />
         </IconButton>
         <IconButton>
-          <CloseIcon className="swipeButtons__close" fontSize="large" />
+          <CloseIcon className="swipeButtons__close"  />
         </IconButton>
         <IconButton>
-          <StarRateIcon className="swipeButtons__star" fontSize="large" />
+          <StarRateIcon className="swipeButtons__star"  />
         </IconButton>
         <IconButton>
-          <FavoriteIcon className="swipeButtons__favorite" fontSize="large" />
+          <FavoriteIcon className="swipeButtons__favorite"  />
         </IconButton>
         <IconButton>
-          <FlashOnIcon className="swipeButtons__lightning"fontSize="large" />
+          <FlashOnIcon className="swipeButtons__lightning"  />
         </IconButton>
       </footer>
     </section>

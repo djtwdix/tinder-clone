@@ -1,0 +1,4 @@
+.userDashboard {
+  display: flex;
+  flex-direction: column;
+}

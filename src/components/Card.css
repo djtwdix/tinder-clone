@@ -3,28 +3,38 @@
   width: 600px;
   max-width: 85vw;
   height: 60vh;
+  margin-top: -10px;
   border-radius: 10px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 18px 53px 0px rgb(144, 144, 144);
+  box-shadow: 0px 15px 53px lightgray
 }
 
-.card > h3 {
+
+#pupBadge {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  background-color: white;
+  background-color: #ffb500;
+  width: 100px;
   position: absolute;
-  bottom: 0px;
+  top: 0px;
+  left: 0px;
   height: 30px;
-  color: pink;
+  color: white;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+}
+
+#pupbadge,
+h3 {
+  color: white;
 }
 
 .card__container {
   display: flex;
   justify-content: center;
-  margin-top: 5vh;
+  margin-top: 1.5rem;
 }
 
 .swipe {

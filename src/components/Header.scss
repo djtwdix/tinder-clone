@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0px 0px 5px lightgray;
+}
+
+.header__logo {
+  height: 70px;
+}
+
+.header__icon {
+  color: lightgray;
+  img {
+    border-radius: 50%;
+  }
+}
+
+/* #ff6daf */
+
+/* ffb500 */
